@@ -1,0 +1,44 @@
+
+"definiciones de los tipos de raiz"
+type Query {
+    "Lista de usuarios registrados en la base de datos (clientes /Admins)"
+    users:[User!]!
+
+}
+type Mutation{
+    register(user:UserInput!):User
+}
+"""
+vamos a especifcar la informacion detallada del usuario
+vamos a tomar en cuenta:
+email= usuarios del cliente de la base de datos.
+Fech de Nacimiento y registro en formato ISO.
+"""
+
+type User{
+    id: ID!
+    name:String!
+    lastname:String!
+    email:String!
+    password:String!
+    registerDate:String!
+    birthday:String!
+    role:Role!
+
+}
+" input par añadir los datos de el usuario en el registro"
+input UserInput{
+    "Identificador en estecaso no obligatorio"
+  id: ID
+    name:String!
+    lastname:String!
+    email:String!
+    password:String!
+    registerDate:String!
+    birthday:String
+    role:Role
+}
+enum Role{
+    CLIENT
+    ADMIN
+}
