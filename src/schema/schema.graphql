@@ -2,11 +2,13 @@
 "definiciones de los tipos de raiz"
 type Query {
     "Lista de usuarios registrados en la base de datos (clientes /Admins)"
-    users:[User!]!
+    users:ResultUsers!
+    login(email:String! , password:String!):ResultLogin 
+    me: ResultLogin
 
 }
 type Mutation{
-    register(user:UserInput!):User
+    register(user:UserInput!):ResultUsers
 }
 """
 vamos a especifcar la informacion detallada del usuario
@@ -15,30 +17,72 @@ email= usuarios del cliente de la base de datos.
 Fech de Nacimiento y registro en formato ISO.
 """
 
-type User{
+type User {
     id: ID!
     name:String!
     lastname:String!
     email:String!
     password:String!
+    verifyPassword:String!
     registerDate:String!
+    telefon:String!
     birthday:String!
     role:Role!
-
+    address:[Address!]!
 }
 " input par añadir los datos de el usuario en el registro"
-input UserInput{
+input UserInput {
     "Identificador en estecaso no obligatorio"
-  id: ID
+    id: ID
     name:String!
     lastname:String!
     email:String!
     password:String!
-    registerDate:String!
-    birthday:String
-    role:Role
+    verifyPassword:String
+    registerDate:String
+    telefon:String="809-123-4567"
+    birthday:String!
+    role:Role=CLIENT
+    address:[AdressInput!]!
+}
+
+
+ type Address{
+
+street:String!
+appartament:String!
+zipcode:String!
+state:String!
+country:String!
+
+}
+ input AdressInput{
+street:String!
+appartament:String!
+zipcode:String!
+state:String!
+country:String!
+
+ }
+ interface Result{
+    status:Boolean!
+    message:String!
+
+}
+type ResultUsers implements Result{
+     status:Boolean!
+    message:String!
+   user:User
+}
+
+type ResultLogin implements Result{
+     status:Boolean!
+    message:String!
+    token:String
 }
 enum Role{
-    CLIENT
-    ADMIN
+CLIENT
+SUPPLY
+ADMIN
+
 }

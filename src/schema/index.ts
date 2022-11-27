@@ -5,7 +5,10 @@ import { makeExecutableSchema } from "graphql-tools";
 import resolvers from './../resolvers';
 const schema: GraphQLSchema = makeExecutableSchema({
 typeDefs,
-resolvers
+resolvers,
+resolverValidationOptions:{
+    requireResolversForResolveType:false
+}
 });
 
 export default schema;
