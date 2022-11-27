@@ -1,7 +1,7 @@
 import { IResolvers } from 'graphql-tools';
-import { COLLECTIONS } from '../config/constants';
+import { COLLECTIONS } from './../../config/constants';
 import bcrypt from 'bcrypt';
-const resolversMutations:IResolvers={
+const resolversUserMutations:IResolvers={
 Mutation:{
 async register(_:void,{user},{db}){
 //comprobar queel usuario no existe
@@ -10,7 +10,7 @@ if(userCheck !== null){
     return {
         status:false,
         message:`Usuario con el Email: ${user.email}  ya existe en nuestra base de datos.`,
-        users:null
+        user:null
     };
 }
     //Comprobar el ultimo usuario registrado para asignar ID
@@ -32,7 +32,7 @@ if(userCheck !== null){
             return {
                 status:true,
                 message:"Usuario exitosamente guardado ",
-                users:user
+                user:user
             };
         }
     ).catch((err: Error)=>{
@@ -40,7 +40,7 @@ if(userCheck !== null){
           return {
             status:false,
             message:"Error al cargar los usuarios .Comprueba que tienes correctamente los usuarios",
-            users:null
+            user:null
         };;
     })
 
@@ -50,7 +50,7 @@ if(userCheck !== null){
 }
 }
 }
-export default resolversMutations;
+export default resolversUserMutations;
 /**
  * 
  * else{

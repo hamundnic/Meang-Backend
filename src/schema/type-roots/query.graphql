@@ -1,0 +1,9 @@
+"define el schema Query"
+type Query {
+    "Lista de usuarios registrados en la base de datos (clientes /Admins)"
+    users:ResultUsers!
+    login(email:String! , password:String!):ResultLogin 
+    me: ResultLogin
+    products:Boolean
+
+}

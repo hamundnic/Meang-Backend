@@ -1,0 +1,13 @@
+type User {
+    id: ID!
+    name:String!
+    lastname:String!
+    email:String!
+    password:String!
+    verifyPassword:String!
+    registerDate:String!
+    telefon:String!
+    birthday:String!
+    role:Role!
+    address:[Address!]!
+}

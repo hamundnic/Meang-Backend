@@ -1,0 +1,8 @@
+ input AdressInput{
+street:String!
+appartament:String!
+zipcode:String!
+state:String!
+country:String!
+
+ }

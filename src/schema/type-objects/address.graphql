@@ -1,0 +1,10 @@
+
+ type Address{
+
+street:String!
+appartament:String!
+zipcode:String!
+state:String!
+country:String!
+
+}

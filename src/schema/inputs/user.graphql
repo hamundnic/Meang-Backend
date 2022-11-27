@@ -1,0 +1,14 @@
+input UserInput {
+    "Identificador en estecaso no obligatorio"
+    id: ID
+    name:String!
+    lastname:String!
+    email:String!
+    password:String!
+    verifyPassword:String
+    registerDate:String
+    telefon:String="809-123-4567"
+    birthday:String!
+    role:Role=CLIENT
+    address:[AdressInput!]!
+}
